@@ -1,4 +1,4 @@
 public class Staff {
-    int StaffID;
-    String StaffName;
+    int staffID;
+    String staffName;
 }

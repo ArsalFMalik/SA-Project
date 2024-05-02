@@ -1,4 +1,4 @@
 public class Category {
-    int CatID;
-    String CatName;
+    int catID;
+    String catName;
 }

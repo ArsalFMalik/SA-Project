@@ -1,6 +1,6 @@
 public class CompetitorResult {
-    int CompNum;
-    int CompID;
-    int CatID;
-    int Score;
+    int compNum;
+    int compID;
+    int catID;
+    int score;
 }

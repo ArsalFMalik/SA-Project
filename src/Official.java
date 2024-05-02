@@ -1,3 +1,3 @@
-public class Official {
+public class Official extends Staff{
     
 }
