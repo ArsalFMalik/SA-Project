@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Competitor {
     public int compNum;
@@ -60,8 +62,31 @@ public class Competitor {
         this.level = level;
     }
 
+    public String getScoreArray(){
+        String array = "" + scores[0];
+        for (int i = 1; i < scores.length; i++){
+            array += ", " + scores[i];
+        }
+        return array;
+    }
+    public void setScoreArray(){
+        Scanner score = new Scanner(System.in);
+        for (int i = 0; i < scores.length; i++){
+            System.out.println("Enter score= ");
+            scores[i] = score.nextInt();
+        }
+        setOverallScore();
+    }
+
     public double getOverallScore(){
-        return 5;
+        double overall = overallScore;
+        return overall;
+    }
+    //Overall Score will be the average of scores minus the highest and lowest values
+    public void setOverallScore(){
+        int[] scores = this.scores;
+        Arrays.sort(scores);
+        this.overallScore = (double)(scores[1] + scores[2] + scores[3]) / 3;
     }
 
     //Competitor number 100, name Keith John Talbot, country UK.
@@ -69,7 +94,7 @@ public class Competitor {
     public String getFullDetails(){
         String[] name = (this.compName).split(" ");
         String fullReport = "Competitor Number " + getCompNum() + " is named " + getCompName() + ". " 
-        + name[0] + " is a " + getCompLevel() + " and received these scores: " + " This gives him an overall score of " + getOverallScore() + ".";
+        + name[0] + " is a " + getCompLevel() + " and received these scores: " + getScoreArray() + ". This gives him an overall score of " + getOverallScore() + ".";
         return fullReport;
     }
 
