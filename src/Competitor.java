@@ -1,27 +1,88 @@
+
 public class Competitor {
-    public int compID;
+    public int compNum;
     private String compName;
     private int compAge;
     private String compEmail;
-    private float overallScore;
+    private int[] scores;
+    private double overallScore;
     private String level;
 
-    public Competitor(int compID, String compName, int compAge, String compEmail, String level){
-        this.compID = compID;
+    //constructor
+    public Competitor(int compNum, String compName, int compAge, String compEmail, String level) {
+        this.compNum = compNum;
         this.compName = compName;
         this.compAge = compAge;
         this.compEmail = compEmail;
-        this.overallScore = 0;
+        this.scores = new int[5]; 
+        this.overallScore = 0.0;
         this.level = level;
     }
 
-     //Competitor number 100, name Keith John Talbot.
-    // Keith is a Novice and received these scores : 5,4,5,4,3
-    // This gives him an overall score of 4.2.
-    public String printSummaryReport(){
+    //get and set methods
+    public int getCompNum() {
+        int num = compNum;
+        return num;
+    }
+    public void setCompNum(int compNum) {
+        this.compNum = compNum;
+    }
+
+    public String getCompName() {
+        String name = compName;
+        return name;
+    }
+    public void setCompName(String compName) {
+        this.compName = compName;
+    }
+
+    public int getCompAge() {
+        int age = compAge;
+        return age;
+    }
+    public void setCompAge(int compAge) {
+        this.compAge = compAge;
+    }
+
+    public String getCompEmail() {
+        String email = compEmail;
+        return email;
+    }
+    public void setCompEmail(String compEmail) {
+        this.compEmail = compEmail;
+    }
+
+    public String getCompLevel() {
+        String lvl = level;
+        return lvl;
+    }
+    public void setCompLevel(String level) {
+        this.level = level;
+    }
+
+    public double getOverallScore(){
+        return 5;
+    }
+
+    //Competitor number 100, name Keith John Talbot, country UK.
+    //Keith is a Novice aged 21 and has an overall score of 5.
+    public String getFullDetails(){
         String[] name = (this.compName).split(" ");
-        String report = "Competitor number " + this.compID + ", name " + this.compName + ". " 
-        + name[0] + " is a " + this.level + " and received these scores : " + " This gives him an overall score of " + this.overallScore + ".";
-        return report;
+        String fullReport = "Competitor Number " + getCompNum() + " is named " + getCompName() + ". " 
+        + name[0] + " is a " + getCompLevel() + " and received these scores: " + " This gives him an overall score of " + getOverallScore() + ".";
+        return fullReport;
+    }
+
+    //CN 100 (KJT) has overall score 5.
+    public String getShortDetails(){
+        String initials = "";
+        String[] name = (this.compName).split(" ");
+        char initial;
+        for (int i = 0; i < name.length; i++){
+            initial = name[i].charAt(0);
+            initials += initial;                  
+        }
+        String shortReport = "CN " + getCompNum() + " (" + initials + ") has an overall score of " + getOverallScore() + ".";
+        return shortReport;
     }
 }
