@@ -10,7 +10,7 @@ public class Competitor {
     private double overallScore;
     private String level;
 
-    //constructor
+    // Constructor
     public Competitor(int compNum, String compName, int compAge, String compEmail, String level) {
         this.compNum = compNum;
         this.compName = compName;
@@ -21,6 +21,7 @@ public class Competitor {
         this.level = level;
     }
 
+    // Second Constructor
     public Competitor(int compNum, String compName, int compAge, String compEmail, String level, int[] scores, double overallScore) {
         this.compNum = compNum;
         this.compName = compName;
@@ -31,7 +32,7 @@ public class Competitor {
         this.level = level;
     }
 
-    //get and set methods
+    // Get and Set methods
     public int getCompNum() {
         int num = compNum;
         return num;
@@ -92,15 +93,13 @@ public class Competitor {
         double overall = overallScore;
         return overall;
     }
-    //Overall Score will be the average of scores minus the highest and lowest values
+    // Overall Score will be the average of scores minus the highest and lowest values
     public void setOverallScore() {
         int[] scores = this.scores;
         Arrays.sort(scores);
         this.overallScore = (double)(scores[1] + scores[2] + scores[3]) / 3;
     }
 
-    //Competitor number 100, name Keith John Talbot, country UK.
-    //Keith is a Novice aged 21 and has an overall score of 5.
     public String getFullDetails() {
         String[] name = (this.compName).split(" ");
         String fullReport = "Competitor Number " + getCompNum() + " is named " + getCompName() + ". " 
@@ -108,7 +107,6 @@ public class Competitor {
         return fullReport;
     }
 
-    //CN 100 (KJT) has overall score 5.
     public String getShortDetails() {
         String initials = "";
         String[] name = (this.compName).split(" ");
