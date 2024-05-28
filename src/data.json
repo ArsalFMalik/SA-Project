@@ -1,0 +1,110 @@
+[
+    {
+        "compNum": 1,
+        "compName": "John Doe",
+        "compAge": 25,
+        "compEmail": "john.doe@example.com",
+        "level": "Beginner",
+        "scores": [5, 5, 5, 5, 5],
+        "overallScore": 5.0
+    },
+    {
+        "compNum": 2,
+        "compName": "Jane Smith",
+        "compAge": 30,
+        "compEmail": "jane.smith@example.com",
+        "level": "Intermediate",
+        "scores": [0, 0, 0, 0, 0],
+        "overallScore": 0.0
+    },
+    {
+        "compNum": 3,
+        "compName": "Alice Johnson",
+        "compAge": 28,
+        "compEmail": "alice.johnson@example.com",
+        "level": "Advanced",
+        "scores": [2, 3, 4, 5, 0],
+        "overallScore": 3.0
+    },
+    {
+        "compNum": 4,
+        "compName": "Bob Brown",
+        "compAge": 22,
+        "compEmail": "bob.brown@example.com",
+        "level": "Beginner",
+        "scores": [3, 4, 5, 0, 1],
+        "overallScore": 3.0
+    },
+    {
+        "compNum": 5,
+        "compName": "Charlie Davis",
+        "compAge": 35,
+        "compEmail": "charlie.davis@example.com",
+        "level": "Intermediate",
+        "scores": [4, 5, 0, 1, 2],
+        "overallScore": 2.0
+    },
+    {
+        "compNum": 6,
+        "compName": "Diana Evans",
+        "compAge": 27,
+        "compEmail": "diana.evans@example.com",
+        "level": "Advanced",
+        "scores": [5, 0, 1, 2, 3],
+        "overallScore": 2.0
+    },
+    {
+        "compNum": 7,
+        "compName": "Ethan Wilson",
+        "compAge": 31,
+        "compEmail": "ethan.wilson@example.com",
+        "level": "Beginner",
+        "scores": [0, 1, 2, 3, 4],
+        "overallScore": 2.0
+    },
+    {
+        "compNum": 8,
+        "compName": "Fiona Harris",
+        "compAge": 29,
+        "compEmail": "fiona.harris@example.com",
+        "level": "Intermediate",
+        "scores": [1, 2, 3, 4, 5],
+        "overallScore": 3.0
+    },
+    {
+        "compNum": 9,
+        "compName": "George Clark",
+        "compAge": 33,
+        "compEmail": "george.clark@example.com",
+        "level": "Advanced",
+        "scores": [2, 3, 4, 5, 0],
+        "overallScore": 3.0
+    },
+    {
+        "compNum": 10,
+        "compName": "Hannah Lewis",
+        "compAge": 26,
+        "compEmail": "hannah.lewis@example.com",
+        "level": "Beginner",
+        "scores": [3, 4, 5, 0, 1],
+        "overallScore": 3.0
+    },
+    {
+        "compNum": 11,
+        "compName": "Ian Walker",
+        "compAge": 32,
+        "compEmail": "ian.walker@example.com",
+        "level": "Intermediate",
+        "scores": [4, 5, 0, 1, 2],
+        "overallScore": 2.0
+    },
+    {
+        "compNum": 12,
+        "compName": "Julia Scott",
+        "compAge": 34,
+        "compEmail": "julia.scott@example.com",
+        "level": "Advanced",
+        "scores": [5, 0, 1, 2, 3],
+        "overallScore": 2.0
+    }
+]

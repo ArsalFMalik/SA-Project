@@ -21,6 +21,16 @@ public class Competitor {
         this.level = level;
     }
 
+    public Competitor(int compNum, String compName, int compAge, String compEmail, String level, int[] scores, double overallScore) {
+        this.compNum = compNum;
+        this.compName = compName;
+        this.compAge = compAge;
+        this.compEmail = compEmail;
+        this.scores = scores; 
+        this.overallScore = overallScore;
+        this.level = level;
+    }
+
     //get and set methods
     public int getCompNum() {
         int num = compNum;
@@ -62,14 +72,14 @@ public class Competitor {
         this.level = level;
     }
 
-    public String getScoreArray(){
+    public String getScoreArray() {
         String array = "" + scores[0];
         for (int i = 1; i < scores.length; i++){
             array += ", " + scores[i];
         }
         return array;
     }
-    public void setScoreArray(){
+    public void setScoreArray() {
         Scanner score = new Scanner(System.in);
         for (int i = 0; i < scores.length; i++){
             System.out.println("Enter score= ");
@@ -78,12 +88,12 @@ public class Competitor {
         setOverallScore();
     }
 
-    public double getOverallScore(){
+    public double getOverallScore() {
         double overall = overallScore;
         return overall;
     }
     //Overall Score will be the average of scores minus the highest and lowest values
-    public void setOverallScore(){
+    public void setOverallScore() {
         int[] scores = this.scores;
         Arrays.sort(scores);
         this.overallScore = (double)(scores[1] + scores[2] + scores[3]) / 3;
@@ -91,7 +101,7 @@ public class Competitor {
 
     //Competitor number 100, name Keith John Talbot, country UK.
     //Keith is a Novice aged 21 and has an overall score of 5.
-    public String getFullDetails(){
+    public String getFullDetails() {
         String[] name = (this.compName).split(" ");
         String fullReport = "Competitor Number " + getCompNum() + " is named " + getCompName() + ". " 
         + name[0] + " is a " + getCompLevel() + " and received these scores: " + getScoreArray() + ". This gives him an overall score of " + getOverallScore() + ".";
@@ -99,7 +109,7 @@ public class Competitor {
     }
 
     //CN 100 (KJT) has overall score 5.
-    public String getShortDetails(){
+    public String getShortDetails() {
         String initials = "";
         String[] name = (this.compName).split(" ");
         char initial;

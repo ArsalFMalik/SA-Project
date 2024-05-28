@@ -1,9 +1,11 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Competitor test = new Competitor(155, "Joe Kent Bolton", 20, "testemail", "Novice");
-        
-        test.setScoreArray();
-        System.out.println(test.getFullDetails());
-        System.out.println(test.getShortDetails());
-    }
+        CompetitorList competitorList = new CompetitorList(".\\src\\data.json");
+        competitorList.printTable();
+        int[] test = competitorList.freqCalc();
+        for (int i = 0; i < 6; i++) {
+            System.out.println(test[i]);
+        }
+        System.out.println(competitorList.findComp(5));
+    } 
 }
