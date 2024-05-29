@@ -5,8 +5,8 @@
         "compAge": 25,
         "compEmail": "john.doe@example.com",
         "level": "Beginner",
-        "scores": [5, 5, 5, 5, 5],
-        "overallScore": 5.0
+        "scores": [1, 2, 3, 4, 5],
+        "overallScore": 3.0
     },
     {
         "compNum": 2,
@@ -14,8 +14,8 @@
         "compAge": 30,
         "compEmail": "jane.smith@example.com",
         "level": "Intermediate",
-        "scores": [0, 0, 0, 0, 0],
-        "overallScore": 0.0
+        "scores": [4, 4, 4, 4, 3],
+        "overallScore": 4.0
     },
     {
         "compNum": 3,
@@ -23,8 +23,8 @@
         "compAge": 28,
         "compEmail": "alice.johnson@example.com",
         "level": "Advanced",
-        "scores": [2, 3, 4, 5, 0],
-        "overallScore": 3.0
+        "scores": [2, 3, 4, 5, 5],
+        "overallScore": 4.0
     },
     {
         "compNum": 4,

@@ -103,7 +103,7 @@ public class Competitor {
     public String getFullDetails() {
         String[] name = (this.compName).split(" ");
         String fullReport = "Competitor Number " + getCompNum() + " is named " + getCompName() + ". " 
-        + name[0] + " is a " + getCompLevel() + " and received these scores: " + getScoreArray() + ". This gives him an overall score of " + getOverallScore() + ".";
+        + name[0] + "'s level is " + getCompLevel() + " and they received these scores: " + getScoreArray() + ". This gives them an overall score of " + getOverallScore() + ".";
         return fullReport;
     }
 

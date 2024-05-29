@@ -119,17 +119,19 @@ public class CompetitorList {
     }
 
     // Calculates frequency of each individual score
-    public int[] freqCalc(){
+    public void freqCalc() {
         int[] result = new int[6];
 
         compList.forEach((comp) -> {
             String[] scores = comp.getScoreArray().split(",");
-            for(int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
                 result[Integer.parseInt(scores[i].trim())]++;
             }
         });
 
-        return result;
+        for (int i = 0; i < 6; i++) {
+            System.out.println("No. of times a '" + i + "' was awarded: " + result[i]);
+        }
     }
 
     // Finds a valid Competitor Number within the ArrayList
@@ -137,11 +139,104 @@ public class CompetitorList {
         String[] result = {"Competitor Number not found"};
 
         compList.forEach((comp) -> {
-            if(comp.getCompNum() == num) {
+            if (comp.getCompNum() == num) {
                 result[0] = comp.getShortDetails();
             }
         });
         
         return result[0];
+    }
+
+    public void highestOverall() {
+        double[] highest = new double[1];
+        compList.forEach((comp) -> {
+            if (comp.getOverallScore() > highest[0]) {
+                highest[0] = comp.getOverallScore();
+            }
+        });
+        System.out.println("Details of the competitor(s) with the highest overall score: ");
+        compList.forEach((comp) -> {
+            if (comp.getOverallScore() == highest[0]) {
+                System.out.println(comp.getFullDetails());
+            }
+        });
+    }
+
+    public void totalComps() {
+        int[] count = new int[1];
+        compList.forEach((comp) ->  {
+            count[0]++;
+        });
+        System.out.println("Total number of competitors: " + count[0]);
+    }
+
+    public void avgOverall() {
+        int[] count = new int[1];
+        double[] overall = new double[1];
+        compList.forEach((comp) -> {
+            count[0]++;
+            overall[0] += comp.getOverallScore();
+        });
+        overall[0] = overall[0] / count[0];
+        System.out.println("Average overall score: " + overall[0]);
+    }
+
+    public void oldestComp() {
+        int[] age = new int[1];
+        compList.forEach((comp) -> {
+            if (comp.getCompAge() > age[0]) {
+                age[0] = comp.getCompAge();
+            }
+        });
+        System.out.println("Age of oldest competitor: " + age[0]);
+    }
+
+    public void youngestComp() {
+        int[] age = new int[1];
+        age[0] = 999;
+        compList.forEach((comp) -> {
+            if (comp.getCompAge() < age[0]) {
+                age[0] = comp.getCompAge();
+            }
+        });
+        System.out.println("Age of youngest competitor: " + age[0]);
+    }
+
+    public void finalReport() {
+        printTable();
+        System.out.println("");
+        highestOverall();
+        System.out.println("");
+        avgOverall();
+        System.out.println("");
+        totalComps();
+        System.out.println("");
+        oldestComp();
+        System.out.println("");
+        youngestComp();
+        System.out.println("");
+        freqCalc();
+    }
+
+    public void searchComp() {
+        Scanner input = new Scanner(System.in);
+        int[] num = new int[1];
+        boolean[] flag = new boolean[1];
+        try {
+            System.out.println("Enter Competitor Number: ");
+            num[0] = input.nextInt();
+            compList.forEach((comp) -> {
+                if (comp.getCompNum() == num[0]) {
+                    System.out.println(comp.getShortDetails());
+                    flag[0] = true;
+                }
+            });
+            if (flag[0] == false) {
+                throw new Exception("Invalid Competitor Number");
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Invalid Competitor Number");
+        }
     }
 }
