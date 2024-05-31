@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class CompetitorList {
@@ -102,26 +104,34 @@ public class CompetitorList {
     }
 
     // Prints a table of all competitors and their details
-    public void printTable() {
+    public String printTable() {
+        StringBuilder table = new StringBuilder();
         String format = "%-10s %-15s %-5s %-25s %-12s %-15s %-12s%n";
-        System.out.printf(format, "Number", "Name", "Age", "Email", "Level", "Scores", "Overall Score");
-        System.out.println("--------------------------------------------------------------------------------------------");
+        
+        // Append the header
+        table.append(String.format(format, "Number", "Name", "Age", "Email", "Level", "Scores", "Overall Score"));
+        table.append("--------------------------------------------------------------------------------------------\n");
+        
+        // Append the details of each competitor
         for (Competitor competitor : compList) {
-            System.out.printf(format, 
+            table.append(String.format(format, 
                 competitor.getCompNum(),
                 competitor.getCompName(),
                 competitor.getCompAge(),
                 competitor.getCompEmail(),
                 competitor.getCompLevel(),
                 competitor.getScoreArray(),
-                competitor.getOverallScore());
+                competitor.getOverallScore()));
         }
+        
+        return table.toString();
     }
 
     // Calculates frequency of each individual score
-    public void freqCalc() {
+    public String freqCalc() {
         int[] result = new int[6];
-
+        StringBuilder frequency = new StringBuilder();
+        String freq = "";
         compList.forEach((comp) -> {
             String[] scores = comp.getScoreArray().split(",");
             for (int i = 0; i < 5; i++) {
@@ -130,8 +140,12 @@ public class CompetitorList {
         });
 
         for (int i = 0; i < 6; i++) {
-            System.out.println("No. of times a '" + i + "' was awarded: " + result[i]);
+            freq = "No. of times a '" + i + "' was awarded: " + result[i];
+            frequency.append(freq);
+            frequency.append("\n");
         }
+
+        return frequency.toString();
     }
 
     // Finds a valid Competitor Number within the ArrayList
@@ -147,75 +161,104 @@ public class CompetitorList {
         return result[0];
     }
 
-    public void highestOverall() {
+    public String highestOverall() {
         double[] highest = new double[1];
+        StringBuilder details = new StringBuilder();
+        details.append("Details of the competitor(s) with the highest overall score: ");
+        details.append("\n");
         compList.forEach((comp) -> {
             if (comp.getOverallScore() > highest[0]) {
                 highest[0] = comp.getOverallScore();
             }
         });
-        System.out.println("Details of the competitor(s) with the highest overall score: ");
         compList.forEach((comp) -> {
             if (comp.getOverallScore() == highest[0]) {
-                System.out.println(comp.getFullDetails());
+                 details.append(comp.getFullDetails());
             }
         });
+        return details.toString();
     }
 
-    public void totalComps() {
+    public int totalComps() {
         int[] count = new int[1];
         compList.forEach((comp) ->  {
             count[0]++;
         });
-        System.out.println("Total number of competitors: " + count[0]);
+        return count[0];
     }
 
-    public void avgOverall() {
-        int[] count = new int[1];
-        double[] overall = new double[1];
-        compList.forEach((comp) -> {
-            count[0]++;
-            overall[0] += comp.getOverallScore();
-        });
-        overall[0] = overall[0] / count[0];
-        System.out.println("Average overall score: " + overall[0]);
+    public String totalString() {
+        String total = "Total number of Competitors: " + totalComps();
+        return total;
     }
 
-    public void oldestComp() {
+    public String avgOverall() {
+        int count = totalComps();
+        double overall = 0.0;
+        String avg = "";
+        overall = overall / count;
+        avg = "Average overall score: " + overall;
+        return avg;
+    }
+
+    public String oldestComp() {
         int[] age = new int[1];
+        String oldest = "";
         compList.forEach((comp) -> {
             if (comp.getCompAge() > age[0]) {
                 age[0] = comp.getCompAge();
             }
         });
-        System.out.println("Age of oldest competitor: " + age[0]);
+        oldest = "Age of oldest competitor: " + age[0];
+        return oldest;
     }
 
-    public void youngestComp() {
+    public String youngestComp() {
         int[] age = new int[1];
         age[0] = 999;
+        String youngest = "";
         compList.forEach((comp) -> {
             if (comp.getCompAge() < age[0]) {
                 age[0] = comp.getCompAge();
             }
         });
-        System.out.println("Age of youngest competitor: " + age[0]);
+        youngest = "Age of youngest competitor: " + age[0];
+        return youngest;
     }
 
     public void finalReport() {
-        printTable();
-        System.out.println("");
-        highestOverall();
-        System.out.println("");
-        avgOverall();
-        System.out.println("");
-        totalComps();
-        System.out.println("");
-        oldestComp();
-        System.out.println("");
-        youngestComp();
-        System.out.println("");
-        freqCalc();
+        Path reportPath = Paths.get(".\\reports", "report.txt");
+        String reportName = reportPath.toString();
+        StringBuilder report = new StringBuilder();
+        try {
+            File reportFile =  new File(reportName);
+            reportFile.createNewFile();
+            FileWriter reportWriter = new FileWriter(reportName);
+            report.append(printTable());
+            report.append("\n");
+            report.append("\n");
+            report.append(highestOverall());
+            report.append("\n");
+            report.append("\n");
+            report.append(avgOverall());
+            report.append("\n");
+            report.append("\n");
+            report.append(totalString());
+            report.append("\n");
+            report.append("\n");
+            report.append(oldestComp());
+            report.append("\n");
+            report.append("\n");
+            report.append(youngestComp());
+            report.append("\n");
+            report.append("\n");
+            report.append(freqCalc());
+            reportWriter.write(report.toString());
+            reportWriter.close();
+        }
+        catch (IOException e){
+            System.out.println("An error occurred");
+        }
     }
 
     public void searchComp() {
