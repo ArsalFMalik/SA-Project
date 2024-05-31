@@ -261,25 +261,15 @@ public class CompetitorList {
         }
     }
 
-    public void searchComp() {
-        Scanner input = new Scanner(System.in);
-        int[] num = new int[1];
-        boolean[] flag = new boolean[1];
-        try {
-            System.out.println("Enter Competitor Number: ");
-            num[0] = input.nextInt();
-            compList.forEach((comp) -> {
-                if (comp.getCompNum() == num[0]) {
-                    System.out.println(comp.getShortDetails());
-                    flag[0] = true;
-                }
-            });
-            if (flag[0] == false) {
-                throw new Exception("Invalid Competitor Number");
+    public Competitor searchComp(int num) {
+        Competitor[] result = new Competitor[1];
+
+        compList.forEach((comp) -> {
+            if (comp.getCompNum() == num) {
+                result[0] = comp;
             }
-        }
-        catch (Exception e) {
-            System.out.println("Invalid Competitor Number");
-        }
+        });
+        
+        return result[0];
     }
 }

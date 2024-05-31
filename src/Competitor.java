@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Competitor {
     public int compNum;
@@ -80,12 +79,8 @@ public class Competitor {
         }
         return array;
     }
-    public void setScoreArray() {
-        Scanner score = new Scanner(System.in);
-        for (int i = 0; i < scores.length; i++){
-            System.out.println("Enter score= ");
-            scores[i] = score.nextInt();
-        }
+    public void setScoreArray(int[] scores) {
+        this.scores = scores;
         setOverallScore();
     }
 
